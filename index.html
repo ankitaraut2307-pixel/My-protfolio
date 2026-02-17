@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankita · Electrical & CSE portfolio</title>
+  <!-- Font Awesome 6 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f6f9fc;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* dynamic glassmorphism header */
+    .header {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 20px rgba(0,20,50,0.05);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,112,243,0.15);
+    }
+
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0b2b5c, #2563eb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #475569;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e293b;
+      font-size: 1.1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #2563eb;
+      color: #2563eb;
+    }
+
+    .header-contact {
+      display: flex;
+      gap: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .header-contact a {
+      color: #334155;
+      transition: 0.2s;
+    }
+
+    .header-contact a:hover {
+      color: #2563eb;
+      transform: scale(1.1);
+    }
+
+    /* main container */
+    .container {
+      max-width: 1300px;
+      margin: 2.5rem auto 1rem;
+      padding: 0 2rem;
+    }
+
+    /* HERO section (dynamic intro) */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(145deg, #ffffff, #f0f7ff);
+      border-radius: 2.5rem;
+      padding: 2.5rem 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 25px 40px -18px rgba(0,80,200,0.25);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .hero-content {
+      flex: 1 1 300px;
+    }
+
+    .hero-content .greet {
+      font-size: 1.3rem;
+      color: #2563eb;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-content .greet i {
+      font-size: 1.6rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(140deg, #0c2d5c, #1e4bb3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .hero-highlight {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      max-width: 550px;
+      margin-bottom: 2rem;
+      border-left: 5px solid #2563eb;
+      padding-left: 1.2rem;
+      background: rgba(37,99,235,0.05);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stat-icon {
+      background: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #2563eb;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .stat-text strong {
+      font-size: 1.4rem;
+      display: block;
+      color: #0b2b5c;
+    }
+
+    .hero-visual {
+      flex: 0 0 200px;
+      text-align: center;
+      font-size: 8rem;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-visual i {
+      filter: drop-shadow(0 8px 12px #abc0d0);
+      transition: 0.2s;
+    }
+
+    .hero-visual p {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: #2563eb;
+    }
+
+    /* Section styling */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 650;
+      margin-bottom: 2rem;
+      display: inline-block;
+      background: linear-gradient(145deg, #1e293b, #2d4b8a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-left: 8px solid #2563eb;
+      padding-left: 1.2rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .skill-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 10px 25px -12px rgba(0,0,0,0.1);
+      transition: all 0.25s ease;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 40px -15px #2563eb40;
+      border-color: #aac8ff;
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      color: #2563eb;
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .skill-desc {
+      color: #334155;
+      font-size: 1rem;
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-desc span {
+      background: #e9f0fd;
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e3c72;
+    }
+
+    .project-spotlight {
+      background: #0b223e;
+      border-radius: 2rem;
+      padding: 2.8rem;
+      color: white;
+      margin: 3rem 0;
+      background-image: radial-gradient(circle at 80% 30%, #18437a, #082032);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-info {
+      flex: 2 1 300px;
+    }
+
+    .project-info .tag {
+      background: #fbbf24;
+      color: #0b223e;
+      font-weight: 600;
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      display: inline-block;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    .project-info h2 {
+      font-size: 2.5rem;
+      margin: 1rem 0 0.8rem;
+      font-weight: 600;
+    }
+
+    .project-info p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 650px;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .project-tech span {
+      background: rgba(255,255,255,0.1);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 400;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .project-cta {
+      flex: 0 1 auto;
+      text-align: center;
+    }
+
+    .github-btn {
+      background: white;
+      color: #0b223e;
+      font-size: 1.8rem;
+      padding: 1.2rem 2rem;
+      border-radius: 80px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 20px 30px -8px black;
+      transition: 0.2s;
+    }
+
+    .github-btn:hover {
+      background: #e2e8f0;
+      transform: scale(1.03);
+    }
+
+    /* education + email row */
+    .edu-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .edu-block {
+      background: white;
+      flex: 2 1 350px;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 6px 18px #d9e6f2;
+      border: 1px solid #eef6ff;
+    }
+
+    .edu-block i {
+      color: #2563eb;
+      font-size: 2.2rem;
+      margin-right: 15px;
+    }
+
+    .edu-block h3 {
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .edu-detail {
+      font-size: 1.2rem;
+      padding-left: 0.5rem;
+      border-left: 4px solid #2563eb;
+      background: #f4f9ff;
+      padding: 1rem 1.5rem;
+      border-radius: 1.2rem;
+    }
+
+    .contact-card {
+      background: linear-gradient(130deg, #ffffff, #ecf6ff);
+      flex: 1 1 260px;
+      border-radius: 2rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 20px 25px -15px #2563eb70;
+    }
+
+    .contact-card .mail-line {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.3rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 12px #cbd5e1;
+    }
+
+    .contact-card .mail-line i {
+      color: #2563eb;
+      font-size: 2rem;
+    }
+
+    .contact-card .mail-line a {
+      text-decoration: none;
+      color: #0b2b5c;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .github-mini {
+      margin-top: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .github-mini a {
+      text-decoration: none;
+      color: #1e293b;
+      background: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 10px #bdd3f0;
+    }
+
+    .github-mini a i {
+      margin-right: 10px;
+      color: #171515;
+    }
+
+    /* footer */
+    .footer {
+      background: #0f1825;
+      color: #b0c4de;
+      padding: 2.5rem 2rem 1.5rem;
+      margin-top: 4rem;
+      border-radius: 3rem 3rem 0 0;
+    }
+
+    .footer-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #ccddee;
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-social a {
+      color: white;
+      font-size: 1.8rem;
+      margin: 0 8px;
+      transition: 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: #3b82f6;
+    }
+
+    .copy {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #7f95b0;
+    }
+
+    hr {
+      border: 0.5px solid #253b55;
+      margin: 2rem 0 1rem;
+    }
+
+    /* responsiveness */
+    @media (max-width: 700px) {
+      .header-container {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .project-spotlight {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- DYNAMIC HEADER with name, navigation, and contact icons -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        Ankita <span>⚡ electrical & cse</span>
+      </div>
+      <div class="nav-links">
+        <a href="#education">Ed</a>
+        <a href="#skills">Tech</a>
+        <a href="#project">Project</a>
+        <a href="#contact">Connect</a>
+      </div>
+      <div class="header-contact">
+        <a href="mailto:ankitaraut2307@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/ankitaraut2307" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn (placeholder)"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- intro / hero : dynamic greeting with type of engineer -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="greet">
+          <i class="fas fa-bolt"></i> ELECTRICAL · CSE
+        </div>
+        <h1>Ankita Raut</h1>
+        <div class="hero-highlight">
+          <i class="fas fa-chevron-right" style="color:#2563eb;"></i> B.Tech Electrical Engineering  | 
+          <i class="fas fa-code"></i> C, C++, Python, DSA in C, Web design
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-icon"><i class="fas fa-laptop-code"></i></span>
+            <span class="stat-text"><strong>5+</strong> projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon"><i class="fas fa-microchip"></i></span>
+            <span class="stat-text"><strong>CSE</strong> major project</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <i class="fas fa-circle-nodes"></i>
+        <p>#innovation</p>
+      </div>
+    </section>
+
+    <!-- Education section (named anchor) -->
+    <section id="education">
+      <div class="edu-contact-row">
+        <div class="edu-block">
+          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="edu-detail">
+            <p><strong>B.Tech Electrical Engineering</strong> (2021–2025) </p>
+            <p>Visvesvaraya National Institute of Technology (VNIT) · 8.7 CGPA</p>
+            <p style="margin-top: 15px;"><i class="fas fa-check-circle" style="color:#2563eb;"></i> Core: Power systems, Control, Embedded C</p>
+          </div>
+        </div>
+        <!-- direct email + github block (reusable contact) -->
+        <div class="contact-card" id="contact">
+          <div class="mail-line">
+            <i class="fas fa-envelope-open-text"></i>
+            <a href="mailto:ankitaraut2307@gmail.com">ankitaraut2307@gmail.com</a>
+          </div>
+          <div class="github-mini">
+            <i class="fab fa-github-alt"></i>
+            <a href="https://github.com/ankitaraut2307" target="_blank"><i class="fab fa-github"></i> /ankitaraut2307</a>
+          </div>
+          <p style="margin-top: 1.3rem; font-size: 0.95rem; color: #1e3a5f;"><i class="fas fa-map-pin"></i> always open to collab</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS section with cards : C, C++, Python, DSA in C, Web design -->
+    <section id="skills">
+      <h2 class="section-title"><i class="fas fa-cog" style="font-size: 2rem; margin-right: 10px;"></i> technical stack</h2>
+      <div class="card-grid">
+        <!-- C language card -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>C</h3>
+          <p>firmware, algorithms, memory management</p>
+          <div class="skill-desc"><span>embedded</span><span>pointers</span><span>struct</span></div>
+        </div>
+        <!-- C++ card -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-laptop"></i></div>
+          <h3>C++</h3>
+          <p>OOP, STL, competitive programming</p>
+          <div class="skill-desc"><span>classes</span><span>polymorphism</span><span>templates</span></div>
+        </div>
+        <!-- Python card -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-python"></i></div>
+          <h3>Python</h3>
+          <p>data analysis, scripting, automation</p>
+          <div class="skill-desc"><span>numpy</span><span>pandas</span><span>matplotlib</span></div>
+        </div>
+        <!-- DSA in C card (special) -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-sitemap"></i></div>
+          <h3>DSA in C</h3>
+          <p>linked lists, trees, graphs, sorting</p>
+          <div class="skill-desc"><span>complexity</span><span>recursion</span><span>optimisation</span></div>
+        </div>
+        <!-- Web design card -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-palette"></i></div>
+          <h3>Web design</h3>
+          <p>HTML5, CSS3, responsive, flex/grid</p>
+          <div class="skill-desc"><span>UI/UX</span><span>Figma</span><span>tailwind</span></div>
+        </div>
+        <!-- bonus: electrical core -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Electrical core</h3>
+          <p>circuit analysis, power electronics</p>
+          <div class="skill-desc"><span>matlab</span><span>pspice</span><span>microcontrollers</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CSE PROJECT spotlight : done a project in CSE -->
+    <section id="project">
+      <div class="project-spotlight">
+        <div class="project-info">
+          <span class="tag"><i class="fas fa-microchip"></i> CSE MAJOR PROJECT</span>
+          <h2>Smart Grid <br>Load Forecasting</h2>
+          <p><i class="fas fa-code-branch"></i>  Hybrid C + Python simulation for electrical load prediction using DSA (BST & hashing) and web dashboard.</p>
+          <div class="project-tech">
+            <span>C (DSA)</span>
+            <span>Python (Flask)</span>
+            <span>chart.js</span>
+            <span>HTML/CSS</span>
+          </div>
+        </div>
+        <div class="project-cta">
+          <a href="https://github.com/ankitaraut2307" target="_blank" class="github-btn">
+            <i class="fab fa-github"></i> repo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- extra dynamic row: DSA + web design mini highlight -->
+    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between; background: #d9eafb; border-radius: 2rem; padding: 1.8rem 2.2rem; margin: 2rem 0;">
+      <span style="font-weight: 600; font-size: 1.3rem;"><i class="fas fa-code" style="color:#2563eb;"></i> DSA in C : 450+ problems</span>
+      <span style="font-weight: 600; font-size: 1.3rem;"><i class="fas fa-globe"></i> web design : 6+ responsive interfaces</span>
+      <span style="font-weight: 600; font-size: 1.3rem;"><i class="fab fa-github"></i> open source contributions</span>
+    </div>
+  </main>
+
+  <!-- FOOTER (dynamic, professional) -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div style="font-size: 2rem; font-weight: 500;">Ankita<span style="color:#6495ed;">.</span></div>
+      <div class="footer-links">
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#project">Project</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="mailto:ankitaraut2307@gmail.com" aria-label="email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/ankitaraut2307" target="_blank" aria-label="github"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <hr>
+    <div class="copy">
+      <p>© 2025 Ankita — B.Tech Electrical Engineering · C, C++, Python, DSA in C, Web Design · </p>
+      <p style="margin-top: 0.5rem;"><i class="fas fa-star" style="color: #fbbf24;"></i> built with professional dynamic touch <i class="fas fa-star" style="color: #fbbf24;"></i></p>
+    </div>
+  </footer>
+
+  <!-- tiny interactivity (dynamic year and console greeting) -->
+  <script>
+    (function() {
+      // update footer year automatically
+      document.querySelector('.copy p').innerHTML = `© ${new Date().getFullYear()} Ankita — B.Tech Electrical Engineering · C, C++, Python, DSA in C, Web Design · `;
+      console.log("⚡ Ankita's portfolio — dynamically charged!");
+    })();
+  </script>
+</body>
+</html>
